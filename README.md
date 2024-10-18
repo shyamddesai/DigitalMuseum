@@ -1,121 +1,156 @@
-# Museum Management Software System
 
-## Project Members
-* Athmane Benarous
-* Mohamed Elsamadouny
-* Sasha Denouvilliez-Pech
-* Saviru Perera
-* Shidan Javaheri
-* Shyam Desai
+# DigitalMuseum: Museum Management Software System
 
-## Project Scope
-This system is designed for a museum of a small town to support their community and provide better services. It allows visitors to login, browse artefacts, donate artefacts, request to loan artefacts, check loan status, book tickets, and book tours. It allows employees to create and move artefacts. It allows manager to manage employees and their shifts.
+**A comprehensive platform for managing museums, artefacts, and enhancing visitor and employee interactions.**
 
- - - -
- 
-# Deliverable 1
+## Table of Contents
+1. [Project Overview](#project-overview)
+2. [Technologies Used](#technologies-used)
+3. [Key Features](#key-features)
+4. [System Architecture](#system-architecture)
+5. [How to Use](#how-to-use)
+6. [Testing and Key Design Decisions](#testing-and-key-design-decisions)
+7. [API Documentation](#api-documentation)
+8. [Setup and Installation](#setup-and-installation)
+9. [Database Setup](#database-setup)
 
-The domain model for the system and the key design decisions made for it are [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/Domain-Model). The 15 most important requirements are listed [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/Requirements). The use-case diagrams along with descriptions for the six most important requirements are listed [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/Use-Case-Diagrams), and the use-case specifications for them are [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/Use-Case-Specifications). The project report detailing meeting minutes and key decisions throughout the deliverable are [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/Project-Report-Deliverable-1).
+---
 
-## Team Roles
+## Project Overview
+DigitalMuseum is a software solution tailored to the needs of small and medium-sized museums. It provides an efficient and streamlined way to manage museum artefacts, facilitate visitor interactions, and organize internal operations. The system allows museums to offer their services online, providing visitors with easy access to browse, loan, or donate artefacts, and book tours and tickets. On the administrative side, museum employees can manage artefacts, and managers can oversee staff shifts and operations.
 
-The task of writing and analyzing elicited requirements was split as follows:
-* **System:** Shyam Desai
-* **Rooms + Artefacts:** Sasha Denouvilliez-Pech
-* **Visitors:** Saviru Perera
-* **Employees:** Athmane Benarous
-* **Manager:** Mohamed Elsamadouny
-* **Loaning + Donating:** Shidan Javaheri
+For a complete overview of the domain model and its key design decisions, please refer to the [Domain Model](https://github.com/shyamddesai/DigitalMuseum/wiki/Domain-Model).
 
-The task of creating use case diagrams and their alternate scenarios was split as follows:
-* **Login to System:** Saviru Perera
-* **Create an Artefact:** Mohamed Elsamadouny
-* **Book Tickets:** Sasha Denouvilliez-Pech
-* **Book Tours:** Shyam Desai
-* **Request to Donate an Artefact:** Athmane Benarous
-* **Request to Loan an Artefact:** Shidan Javaheri
+---
 
-_Note: All major decisions were always discussed and made by the entire team during a meeting._
+## Technologies Used
+- **Frontend**: React, HTML, CSS, JavaScript
+- **Backend**: Java, Spring Boot, RESTful APIs
+- **Database**: PostgreSQL, Hibernate
+- **Deployment**: Docker, GitHub Actions
 
-## Contributions
-| Name             | Responsibilities                                                  | Hours (incl. meetings) |
-|:----------------:|:----------------------------------------------------------------- |:----------------------:|
-| Athmane Benarous | - Contributed to designing the domain model <br> - Contributed to keeping track of the meeting minutes <br> - Wrote the test cases for the artefact, communication, donation, employee, and loan classes <br> - Wrote testing documentation | 25 hours |
-| Mohamed Elsamadouny |- Designed the domain model <br> - Wrote the test cases for Manager, Notification, OpenDay, Person and Room classes | 22 hours |
-| Sasha Denouvilliez-Pech | - Designed the domain model <br> - Designed the database <br> - JPA Annotations <br> - Created issues <br> - Reviewed use-case diagrams and scenarios| 40 hours |
-| Saviru Perera | - Designed the domain model <br> -Wrote Tests for Shift, Visitor, Ticket, Tour, and Schedule Classes  | 20 hours |
-| Shidan Javaheri | - Reviewed and finalized requirements <br> - Designed the domain model <br> - Designed the database <br> - JPA Annotations <br> - Set up file structure and project connection to database <br> - Wrote Sample test file for ArtefactRepository <br> - Reviewed and edited all tests <br> - Edited Wiki page <br> - Asked questions on behalf of the group | 55 hours |
-| Shyam Desai | - Designed the domain model <br> - Reviewed and finalized requirements <br> - Reviewed other teammates' use-case diagrams <br> - Populated and updated the GitHub Wiki page <br> - Wrote test case for the Visitor class | 25 hours |
+---
 
-- - -
+## Key Features
+### 1. **Visitor Management**:
+- **Account Creation and Login**: Visitors can create accounts, log in, and manage their personal details.
+- **Browse Artefacts**: Visitors can view the museum's collection, read descriptions, and request artefacts for loan or donation.
+- **Book Tickets and Tours**: Visitors can easily book tickets for museum events or schedule tours.
+- **Track Loan and Donation Status**: Visitors can check the status of their artefact loan or donation requests directly from their profile.
 
-# Deliverable 2
+### 2. **Artefact Management**:
+- **Create and Update Artefacts**: Employees can create, edit, or remove artefacts, including details such as artefact history, origin, and exhibit location.
+- **Move Artefacts**: Employees have the ability to manage artefact transfers within the museum's different sections.
 
-The API documentation for each controller method in the system is found [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/API-Documentation#api-documentation). The plan we followed while writing tests is detailed [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/Test-Plan). Our backlog is seen [here](https://github.com/orgs/McGill-ECSE321-Fall2022/projects/21). The project report detailing meeting minutes is [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/Project-Report-Deliverable-2#meeting-minutes), and the updates made to the class diagram are shown [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/Project-Report-Deliverable-2#update-to-uml-class-diagram).
+### 3. **Employee and Shift Management**:
+- **Employee Directory**: Managers can add or update employee records, including personal details, roles, and assigned shifts.
+- **Shift Scheduling**: Managers can manage employee shifts, ensuring the museum is properly staffed for each day.
 
-## Team Roles
+---
 
-The task of writing classes and its tests were split as follows:
-* **Artefact:** Sasha Denouvilliez-Pech
-* **Communication:** Sasha Denouvilliez-Pech
-* **Donation:** Mohamed Elsamadouny
-* **Employee:** Saviru Perera
-* **Loan:** Shidan Javaheri
-* **Login:** Saviru Perera
-* **Manager:** Shidan Javaheri
-* **Notification:** Sasha Denouvilliez-Pech
-* **OpenDay:** Mohamed Elsamadouny
-* **Room:** Sasha Denouvilliez-Pech
-* **Schedule:**  Athmane Benarous
-* **Shift:**  Athmane Benarous
-* **Ticket:** Shyam Desai
-* **Tour:** Shyam Desai
-* **Visitor:** Saviru Perera
+## System Architecture
+DigitalMuseum is structured using a multi-layer architecture to separate concerns and ensure scalability:
 
+### 1. **Frontend**:
+   - Built using **React.js**, the frontend delivers a responsive and interactive user experience for visitors, employees, and managers.
+   - The user interface provides dynamic forms, interactive artefact browsing, and booking systems for a smooth user experience.
 
-## Contributions
-| Name             | Responsibilities                                                  | Hours (incl. meetings) |
-|:----------------:|:----------------------------------------------------------------- |:----------------------:|
-| Athmane Benarous | - Shift and Schedule classes <br> - Handling final GitHub pull request issues <br> | 30 hours |
-| Mohamed Elsamadouny | - OpenDay and Donation classes <br> - Wrote API documentation for Donation, OpenDay, Schedule, Shift, Employee, Visitor <br>  | 30 hours |
-| Sasha Denouvilliez-Pech | - Setting the views in the Kanban board <br> - Writing initial issues and labels <br> - Artefact, Room, Communication, and Notification classes <br> - Review code and PRs <br> - Writing test plan | 45 hours |
-| Saviru Perera | - Employee, Visitor, and Login classes <br> - Writing Service, Service Tests <br> - Writing Controllers and Controller Tests <br> | 40 hours |
-| Shidan Javaheri | - Providing code examples and templates <br> - Static code reviews for all classes, and debugging assistance <br> - Loan and Manager classes <br> - Review code and PRs <br> - Writing API documentation <br> - Final wiki review <br> | 60 hours |
-| Shyam Desai | - Writing the GitHub issues, service class, controller class, service tests, and integration tests for Tour and Ticket <br> - Keeping track of the meeting minutes <br> - Writing the API documentation in the wiki <br> | 32 hours |
+### 2. **Backend**:
+   - The backend is developed with **Spring Boot** in Java, which handles business logic and data processing.
+   - It includes RESTful APIs communicating with the frontend for artefact management, user authentication, and loan/donation request handling.
 
-- - -
+### 3. **Database**:
+   - **PostgreSQL** is used as the relational database to manage museum data, including artefacts, users, employees, and requests.
+   - **Hibernate ORM** is integrated to map Java objects to database tables, streamlining database operations.
 
-# Deliverable 3
+### 4. **Deployment**:
+   - The system is containerized using **Docker** for easy deployment and scaling.
+   - Continuous Integration (CI) pipelines are set up using **GitHub Actions**, enabling automated testing and deployment.
 
-The architecture model can be found [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/Architecture-Model). The implementation of the Web Frontend can be found [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/tree/main/mmss-frontend). The Build System and CI specifications can be found [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/Build-System-and-CI-Specifications#build-system-and-ci-specifications). The key design decisions are found [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/Project-Report-Deliverable-3#key-design-decisions), additional features are [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/Project-Report-Deliverable-3#additional-features), and changes made to the backend can be found [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/Project-Report-Deliverable-3#backend-modifications). The project report detailing meeting minutes is [here](https://github.com/McGill-ECSE321-Fall2022/project-group-09/wiki/Project-Report-Deliverable-3#meeting-minutes).
+For further details on the architecture, please visit the [Architecture Model](https://github.com/shyamddesai/DigitalMuseum/wiki/Architecture-Model) page.
 
-## Team Roles
+---
 
-The task of writing web pages were split as follows:
-* **Artefact:** Sasha Denouvilliez-Pech
-* **Room:** Sasha Denouvilliez-Pech
-* **Ticket:** Shyam Desai
-* **Tour:** Shyam Desai
-* **OpenDay:** Mohamed Elsamadouny
-* **Donation:** Mohamed Elsamadouny
-* **Employee:** Saviru Perera
-* **Visitor:** Saviru Perera
-* **Loan:** Shidan Javaheri
-* **Login:** Shidan Javaheri
-* **Manager:** Shidan Javaheri
-* **Notification:** Athmane Benarous + Shidan Javaheri
-* **Schedule:**  Athmane Benarous
-* **Shift:**  Athmane Benarous
-* **Main Navigation Bar:** Athmane Benarous
+## How to Use
+### 1. **Visitor Workflow**:
+   - Create an account or log in.
+   - Browse the artefact collection, book tickets for museum events, or schedule a tour.
+   - Request to loan or donate artefacts, and track your request status from your profile page.
 
+### 2. **Employee Workflow**:
+   - Log in with employee credentials.
+   - Access artefact management features: create, update, or move artefacts.
+   - Manage visitor requests for artefact loans and donations.
 
-## Contributions
-| Name             | Responsibilities                                                  | Hours (incl. meetings) |
-|:----------------:|:----------------------------------------------------------------- |:----------------------:|
-| Athmane Benarous | - Manage shifts and manage notifications <br> - User navigation bar <br> - Global and specific CSS styling <br> - Handle merging for pull requests <br> - Code review <br> | 30 hours |
-| Mohamed Elsamadouny | - Updates to OpenDay backend <br> - Created the Manage Donations, Visitor Donations and Manage OpenDays pages <br> | 25 hours |
-| Sasha Denouvilliez-Pech | - View, create, update, and move artefacts <br> - Room tables (Dashboard) <br> - Wiki <br> - Review code and PRs <br> - Architecture Model <br> - Architecture Model <br>| 40 hours |
-| Saviru Perera | - Create visitor page <br> - Wiki <br>  | 20 hours |
-| Shidan Javaheri | - Login pages <br> - View and Update Loans page <br> - View and Delete Accounts Page <br> - Send notifications to all accounts <br> - Register Employees <br> - Static Code Reviews + Debugging Assistance <br> - Review PRs <br> - Final review <br> | 50 hours |
-| Shyam Desai | - Wrote GitHub issues for ticket and tour webpages <br> - Create ticket and tour booking for visitors <br> - Manage ticket and tour booking for employees <br> - Keeping track of the meeting minutes <br> - GitHub wiki <br> - Presentation Slides <br> | 28 hours | 
+### 3. **Manager Workflow**:
+   - Log in with manager credentials.
+   - Access employee management features: view and update employee records, assign shifts, and review museum operations.
+   - Monitor artefact requests and manage notifications.
 
+---
+
+## Testing and Key Design Decisions
+
+DigitalMuseum employs both static and dynamic testing methodologies to ensure the integrity of the system. For more details on the testing approach, please refer to the [Test Plan](https://github.com/shyamddesai/DigitalMuseum/wiki/Test-Plan).
+
+Some of the key design decisions made during the project can be found in the [Project Report Deliverable 1](https://github.com/shyamddesai/DigitalMuseum/wiki/Project-Report-Deliverable-1) and [Project Report Deliverable 3](https://github.com/shyamddesai/DigitalMuseum/wiki/Project-Report-Deliverable-3#key-design-decisions) sections.
+
+---
+
+## API Documentation
+The API provides endpoints for the core functionalities of the system.
+
+Key Endpoints:
+- **GET** `/artefacts`: Retrieve a list of all artefacts in the museum.
+- **POST** `/artefacts`: Create a new artefact.
+- **PUT** `/artefacts/{id}`: Update an existing artefact.
+- **DELETE** `/artefacts/{id}`: Remove an artefact from the museum's collection.
+
+For more detailed endpoint usage, refer to the [API Documentation](https://github.com/shyamddesai/DigitalMuseum/wiki/API-Documentation).
+
+---
+
+## Setup and Installation
+
+To set up and run the DigitalMuseum system on your local machine, follow the steps below:
+
+### 1. Backend Setup
+
+- Ensure you have **Java 11+** and **Gradle** installed on your system.
+- Navigate to the backend directory and run the following commands:
+```bash
+./gradlew clean build
+./gradlew bootRun
+```
+- The backend will be available at `http://127.0.0.1:8080`.
+
+### 2. Frontend Setup
+
+- Ensure **node.js** (version 10.21.0 or higher) and **npm** (version 6.14.4 or higher) are installed on your system.
+- Navigate to the frontend directory and run the following command to start the frontend:
+```bash
+npm run dev
+```
+- The frontend will be available at `http://127.0.0.1:8087`.
+
+Once both backend and frontend systems are running, you can start using the application.
+
+To log in as the Manager, use the following preset credentials:
+- **Username**: marwan.kanaan@mcgill.ca
+- **Password**: 1VerySecurePassword
+
+---
+
+## Database Setup
+
+The system uses a PostgreSQL database. The default configuration is as follows:
+- **Username**: `postgres`
+- **Password**: `password`
+- **Database Name**: `mmss`
+
+To set up the PostgreSQL database:
+```bash
+psql -U postgres -c "CREATE DATABASE mmss;"
+```
+
+For further details on database setup and configuration, refer to the [Build System and CI Specifications](https://github.com/shyamddesai/DigitalMuseum/wiki/Build-System-and-CI-Specifications).
